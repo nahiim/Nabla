@@ -6,7 +6,6 @@
 #ifndef _NBL_BUILTIN_HLSL_SCENE_ANIMATION_INCLUDED_
 #define _NBL_BUILTIN_HLSL_SCENE_ANIMATION_INCLUDED_
 
-
 #include <nbl/builtin/hlsl/math/keyframe.hlsl>
 
 namespace nbl
@@ -19,7 +18,9 @@ namespace scene
 struct Animation_t
 {
 	uint keyframeOffset; // same offset for timestamps and keyframes
-	uint keyframesCount_interpolationMode; // 2 bits for interpolation mode
+	
+	uint keyframesCount : 30;       // 30 bits for keyframes count
+	uint interpolationMode : 2;     // 2 bits for interpolation mode
 };
 
 
@@ -35,7 +36,5 @@ struct AnimationBlend_t
 }
 }
 }
-
-
 
 #endif
