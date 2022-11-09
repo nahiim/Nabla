@@ -59,7 +59,6 @@ float3 conductor_impl(float3 Eta, float3 EtaLen2, float CosTheta)
 }
 
 
-
 // dielectrics
 float dielectric_common(in float orientedEta2, in float AbsCosTheta)
 {
