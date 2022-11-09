@@ -60,7 +60,7 @@ struct FatKeyframe_t
 		FatKeyframe_t result;
 
 		result.scale = lerp(start.scale, end.scale, fraction);
-		result.rotation = slerp(start.rotation, end.rotation, fraction);
+		result.rotation = quaternion_t.flerp(start.rotation, end.rotation, fraction);
 		result.translation = lerp(start.translation, end.translation, fraction);
 
 		return result;

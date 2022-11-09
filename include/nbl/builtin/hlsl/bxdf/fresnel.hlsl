@@ -1,5 +1,5 @@
 
-// Copyright (C) 2018-2020 - DevSH Graphics Programming Sp. z O.O.
+// Copyright (C) 2018-2022 - DevSH Graphics Programming Sp. z O.O.
 // This file is part of the "Nabla Engine".
 // For conditions of distribution and use, see copyright notice in nabla.h
 
@@ -79,7 +79,7 @@ float3 dielectric_common(in float3 orientedEta2, in float AbsCosTheta)
    const float SinTheta2 = 1.0-AbsCosTheta*AbsCosTheta;
 
    // the max() clamping can handle TIR when orientedEta2<1.0
-   const vec3 t0 = sqrt(max(float3(orientedEta2)-SinTheta2,float3(0.0)));
+   const float3 t0 = sqrt(max(float3(orientedEta2)-SinTheta2,float3(0.0)));
    const float3 rs = (float3(AbsCosTheta) - t0) / (float3(AbsCosTheta) + t0);
 
    const float3 t2 = orientedEta2*AbsCosTheta;
@@ -111,7 +111,7 @@ struct thindielectric
         
         return lerp(
             (singleInterfaceReflectance-doubleInterfaceReflectance)/(float3(1.0)-doubleInterfaceReflectance)*2.0,
-            vec3(1.0),
+            float3(1.0),
             greaterThan(doubleInterfaceReflectance,float3(0.9999))
         );
     }
