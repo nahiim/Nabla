@@ -7,6 +7,7 @@
 #define _NBL_BUILTIN_GLSL_RANDOM_XOROSHIRO_HLSL_INCLUDED_
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <nbl/builtin/hlsl/math/functions.hlsl>
 
 =======
@@ -14,10 +15,16 @@
 
 #include <nbl/builtin/hlsl/bit.hlsl>
 >>>>>>> 7156483209f3077dab03775532c0e9922176b765
+=======
+#include <nbl/builtin/hlsl/cpp_compat/vector.hlsl>
+
+#include <nbl/builtin/hlsl/bit.hlsl>
+>>>>>>> upstream/spirv_intrinsics
 
 namespace nbl
 {
 namespace hlsl
+<<<<<<< HEAD
 <<<<<<< HEAD
 {
 
@@ -52,11 +59,18 @@ uint xoroshiro64starstar(inout xoroshiro64starstar_state_t state)
 
 struct Xoroshiro64StateHolder
 {
+=======
+{
+
+struct Xoroshiro64StateHolder
+{
+>>>>>>> upstream/spirv_intrinsics
 	void xoroshiro64_state_advance()
 	{
 		state[1] ^= state[0];
 		state[0] = rotl(state[0], 26u) ^ state[1] ^ (state[1]<<9u); // a, b
 		state[1] = rotl(state[1], 13u); // c
+<<<<<<< HEAD
 	}
 	
 	uint32_t2 state;
@@ -100,6 +114,50 @@ struct Xoroshiro64StarStar
 	Xoroshiro64StateHolder stateHolder;
 };
 >>>>>>> 7156483209f3077dab03775532c0e9922176b765
+=======
+	}
+	
+	uint32_t2 state;
+};
+
+struct Xoroshiro64Star
+{
+	static Xoroshiro64Star construct(NBL_CONST_REF_ARG(uint32_t2) initialState)
+	{
+		Xoroshiro64StateHolder stateHolder = {initialState};
+		return Xoroshiro64Star(stateHolder);
+	}
+	
+	uint32_t operator()()
+	{
+		const uint32_t result = stateHolder.state[0]*0x9E3779BBu;
+		stateHolder.xoroshiro64_state_advance();
+
+		return result;
+	}
+	
+	Xoroshiro64StateHolder stateHolder;
+};
+
+struct Xoroshiro64StarStar
+{
+	static Xoroshiro64StarStar construct(NBL_CONST_REF_ARG(uint32_t2) initialState)
+	{
+		Xoroshiro64StateHolder stateHolder = {initialState};
+		return Xoroshiro64StarStar(stateHolder);
+	}
+	
+	uint32_t operator()()
+	{
+		const uint32_t result = rotl(stateHolder.state[0]*0x9E3779BBu,5u)*5u;
+	    stateHolder.xoroshiro64_state_advance();
+	
+		return result;
+	}
+
+	Xoroshiro64StateHolder stateHolder;
+};
+>>>>>>> upstream/spirv_intrinsics
 
 }
 }

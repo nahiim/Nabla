@@ -8,10 +8,15 @@
 #define _NBL_BUILTIN_HLSL_COLOR_SPACE_ENCODE_CIE_XYZ_INCLUDED_
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #include <nbl/builtin/hlsl/cpp_compat.hlsl>
 
 >>>>>>> 7156483209f3077dab03775532c0e9922176b765
+=======
+#include <nbl/builtin/hlsl/cpp_compat.hlsl>
+
+>>>>>>> upstream/spirv_intrinsics
 namespace nbl
 {
 namespace hlsl
@@ -19,6 +24,7 @@ namespace hlsl
 namespace colorspace
 {
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static const float3x3 scRGBtoXYZ = float3x3(
     float3(0.4124564, 0.3575761, 0.1804375),
@@ -80,6 +86,8 @@ static const float3x3 ACEScctoXYZ = float3x3(
 
 static const float3x3 ACESccttoXYZ = ACEScctoXYZ;
 =======
+=======
+>>>>>>> upstream/spirv_intrinsics
 NBL_CONSTEXPR float32_t3x3 scRGBtoXYZ = float32_t3x3(
     float32_t3(0.412391f, 0.357584f, 0.180481f),
     float32_t3(0.212639f, 0.715169f, 0.072192f),
@@ -139,7 +147,10 @@ NBL_CONSTEXPR float32_t3x3 ACEScctoXYZ = float32_t3x3(
 );
 
 NBL_CONSTEXPR float32_t3x3 ACESccttoXYZ = ACEScctoXYZ;
+<<<<<<< HEAD
 >>>>>>> 7156483209f3077dab03775532c0e9922176b765
+=======
+>>>>>>> upstream/spirv_intrinsics
 
 }
 }

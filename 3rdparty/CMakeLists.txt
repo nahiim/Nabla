@@ -22,6 +22,7 @@ add_subdirectory(openssl openssl EXCLUDE_FROM_ALL)
 
 # DXC
 <<<<<<< HEAD
+<<<<<<< HEAD
 option(_NBL_COMPILE_WITH_DXC_ "Build Nabla with DXC" ON)
 option(_NBL_ENABLE_DXC_COMPILE_TESTS_ "Enable it in order to test compilation of Nabla shaders at build time" OFF)
 option(_NBL_DXC_COMPILE_TESTS_ENABLE_CMAKE_LOG_ "Enable more verbose log when creating DXC compile test target - only for Nabla developers!" OFF)
@@ -38,6 +39,8 @@ else()
 		message(WARNING "_NBL_ENABLE_DXC_COMPILE_TESTS_ enabled, but _NBL_COMPILE_WITH_DXC_ is turned off! DXC compile tests won't be executed...")
 	endif()
 =======
+=======
+>>>>>>> upstream/spirv_intrinsics
 get_filename_component(DXC_SPIRV_TOOLS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/dxc/dxc/external/SPIRV-Tools" ABSOLUTE)
 get_filename_component(DXC_SPIRV_HEADERS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/dxc/dxc/external/SPIRV-Headers" ABSOLUTE)
 
@@ -54,7 +57,10 @@ add_subdirectory(dxc dxc EXCLUDE_FROM_ALL)
 
 if(_NBL_ENABLE_DXC_COMPILE_TESTS_)
 	message(STATUS "_NBL_ENABLE_DXC_COMPILE_TESTS_ enabled, DXC compile test target will be executed at build time!")
+<<<<<<< HEAD
 >>>>>>> 7156483209f3077dab03775532c0e9922176b765
+=======
+>>>>>>> upstream/spirv_intrinsics
 endif()
 
 # volk

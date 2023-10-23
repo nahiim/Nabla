@@ -7,13 +7,19 @@
 #define _NBL_BUILTIN_HLSL_COLOR_SPACE_OETF_INCLUDED_
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <nbl/builtin/hlsl/common.hlsl>
 =======
+=======
+>>>>>>> upstream/spirv_intrinsics
 //#include <nbl/builtin/hlsl/common.hlsl>
 #include <nbl/builtin/hlsl/cpp_compat.hlsl>
 #include <nbl/builtin/hlsl/cpp_compat/promote.hlsl>
 #include <nbl/builtin/hlsl/type_traits.hlsl>
+<<<<<<< HEAD
 >>>>>>> 7156483209f3077dab03775532c0e9922176b765
+=======
+>>>>>>> upstream/spirv_intrinsics
 
 namespace nbl
 {
@@ -25,15 +31,21 @@ namespace oetf
 {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 float3 identity(in float3 _linear)
 =======
 template<typename T>
 T identity(NBL_CONST_REF_ARG(T) _linear)
 >>>>>>> 7156483209f3077dab03775532c0e9922176b765
+=======
+template<typename T>
+T identity(NBL_CONST_REF_ARG(T) _linear)
+>>>>>>> upstream/spirv_intrinsics
 {
     return _linear;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 float3 impl_shared_2_4(in float3 _linear, in float vertex)
 {
@@ -47,6 +59,8 @@ float3 sRGB(in float3 _linear)
     bool3 negatif = (_linear < (0.0).xxx);
     float3 absVal = impl_shared_2_4(abs(_linear), 0.0031308);
 =======
+=======
+>>>>>>> upstream/spirv_intrinsics
 template<typename T>
 T impl_shared_2_4(NBL_CONST_REF_ARG(T) _linear, typename scalar_type<T>::type vertex)
 {
@@ -62,11 +76,15 @@ T sRGB(NBL_CONST_REF_ARG(T) _linear)
     typedef typename scalar_type<T>::type Val_t;
     bool3 negatif = (_linear < promote<T, Val_t>(0.0));
     T absVal = impl_shared_2_4<T>(abs(_linear), 0.0031308);
+<<<<<<< HEAD
 >>>>>>> 7156483209f3077dab03775532c0e9922176b765
+=======
+>>>>>>> upstream/spirv_intrinsics
     return lerp(absVal, -absVal, negatif);
 }
 
 // also known as P3-D65
+<<<<<<< HEAD
 <<<<<<< HEAD
 float3 Display_P3(in float3 _linear)
 {
@@ -132,6 +150,8 @@ float3 ACEScct(in float3 _linear)
     bool3 right = (_linear > (0.0078125).xxx);
     return lerp(10.5402377416545 * _linear + 0.0729055341958355, (log2(_linear) + (9.72).xxx) / 17.52, right);
 =======
+=======
+>>>>>>> upstream/spirv_intrinsics
 template<typename T>
 T Display_P3(NBL_CONST_REF_ARG(T) _linear)
 {
@@ -213,7 +233,10 @@ T ACEScct(NBL_CONST_REF_ARG(T) _linear)
     typedef typename scalar_type<T>::type Val_t;
     bool3 right = (_linear > promote<T, Val_t>(0.0078125));
     return lerp(Val_t(10.5402377416545) * _linear + Val_t(0.0729055341958355), (log2(_linear) + promote<T, Val_t>(9.72)) / Val_t(17.52), right);
+<<<<<<< HEAD
 >>>>>>> 7156483209f3077dab03775532c0e9922176b765
+=======
+>>>>>>> upstream/spirv_intrinsics
 }
 
 }

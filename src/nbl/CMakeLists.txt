@@ -521,6 +521,7 @@ endif()
 
 # DXC
 <<<<<<< HEAD
+<<<<<<< HEAD
 if(_NBL_COMPILE_WITH_DXC_)
 	add_dependencies(Nabla dxc)
 	target_include_directories(Nabla PRIVATE 
@@ -641,6 +642,10 @@ if(_NBL_COMPILE_WITH_DXC_)
 if(_NBL_ENABLE_DXC_COMPILE_TESTS_)
 	add_dependencies(Nabla HLSL_NABLA_COMPILE_TEST)
 >>>>>>> 7156483209f3077dab03775532c0e9922176b765
+=======
+if(_NBL_ENABLE_DXC_COMPILE_TESTS_)
+	add_dependencies(Nabla HLSL_NABLA_COMPILE_TEST)
+>>>>>>> upstream/spirv_intrinsics
 endif()
 
 add_custom_command(OUTPUT "${DXC_LIB}" "${DXC_DLL}"

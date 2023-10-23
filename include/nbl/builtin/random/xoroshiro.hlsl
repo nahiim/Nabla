@@ -23,7 +23,11 @@ typedef uint2 xoroshiro64star_state_t;
 typedef uint2 xoroshiro64starstar_state_t;
 
 namespace impl
+<<<<<<< HEAD
 {
+=======
+{
+>>>>>>> upstream/spirv_intrinsics
 	uint2 xoroshiro64_state_advance(uint2 state)
 	{
 		state[1] ^= state[0];
@@ -31,6 +35,7 @@ namespace impl
 		state[1] = rotl(state[1], 13u); // c
 		
 		return state;
+<<<<<<< HEAD
 	}
 }
 
@@ -68,6 +73,45 @@ struct Xoroshriro64StarStar
 	}
 
 	xoroshiro64starstar_state_t state;
+=======
+	}
+}
+
+struct Xoroshriro64Star
+{
+	static Xoroshriro64Star construct(xoroshiro64star_state_t initialState)
+	{
+		return { initialState };
+	}
+	
+	uint32_t operator()()
+	{
+		const uint32_t result = state[0]*0x9E3779BBu;
+		state = impl::xoroshiro64_state_advance(state);
+
+		return result;
+	}
+
+	xoroshiro64star_state_t state;
+};
+
+struct Xoroshriro64StarStar
+{
+	static Xoroshriro64StarStar construct(xoroshiro64starstar_state_t initialState)
+	{
+		return { initialState };
+	}
+	
+	uint32_t operator()()
+	{
+		const uint32_t result = rotl(state[0]*0x9E3779BBu,5u)*5u;
+	    state = impl::xoroshiro64_state_advance(state);
+	
+		return result;
+	}
+
+	xoroshiro64starstar_state_t state;
+>>>>>>> upstream/spirv_intrinsics
 };
 
 }

@@ -7,13 +7,19 @@
 #define _NBL_BUILTIN_HLSL_COLOR_SPACE_EOTF_INCLUDED_
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <nbl/builtin/hlsl/common.hlsl>
 =======
+=======
+>>>>>>> upstream/spirv_intrinsics
 //#include <nbl/builtin/hlsl/common.hlsl>
 #include <nbl/builtin/hlsl/cpp_compat.hlsl>
 #include <nbl/builtin/hlsl/cpp_compat/promote.hlsl>
 #include <nbl/builtin/hlsl/type_traits.hlsl>
+<<<<<<< HEAD
 >>>>>>> 7156483209f3077dab03775532c0e9922176b765
+=======
+>>>>>>> upstream/spirv_intrinsics
 
 namespace nbl
 {
@@ -25,15 +31,21 @@ namespace eotf
 {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 float3 identity(in float3 nonlinear)
 =======
 template<typename T>
 T identity(NBL_CONST_REF_ARG(T) nonlinear)
 >>>>>>> 7156483209f3077dab03775532c0e9922176b765
+=======
+template<typename T>
+T identity(NBL_CONST_REF_ARG(T) nonlinear)
+>>>>>>> upstream/spirv_intrinsics
 {
     return nonlinear;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 float3 impl_shared_2_4(in float3 nonlinear, in float vertex)
 {
@@ -47,6 +59,8 @@ float3 sRGB(in float3 nonlinear)
     bool3 negatif = (nonlinear < (0.0).xxx);
     float3 absVal = impl_shared_2_4(abs(nonlinear), 0.04045);
 =======
+=======
+>>>>>>> upstream/spirv_intrinsics
 template<typename T>
 T impl_shared_2_4(NBL_CONST_REF_ARG(T) nonlinear, typename scalar_type<T>::type vertex)
 {
@@ -62,11 +76,15 @@ T sRGB(NBL_CONST_REF_ARG(T) nonlinear)
     typedef typename scalar_type<T>::type Val_t;
     bool3 negatif = (nonlinear < promote<T, Val_t>(0.0));
     T absVal = impl_shared_2_4<T>(abs(nonlinear), 0.04045);
+<<<<<<< HEAD
 >>>>>>> 7156483209f3077dab03775532c0e9922176b765
+=======
+>>>>>>> upstream/spirv_intrinsics
     return lerp(absVal, -absVal, negatif);
 }
 
 // also known as P3-D65
+<<<<<<< HEAD
 <<<<<<< HEAD
 float3 Display_P3(in float3 nonlinear)
 {
@@ -137,6 +155,8 @@ float3 ACEScct(in float3 nonlinear)
 }
 	
 =======
+=======
+>>>>>>> upstream/spirv_intrinsics
 template<typename T>
 T Display_P3(NBL_CONST_REF_ARG(T) nonlinear)
 {
@@ -221,7 +241,10 @@ T ACEScct(NBL_CONST_REF_ARG(T) nonlinear)
     return max(lerp((nonlinear - promote<T, Val_t>(0.0729055341958355)) / Val_t(10.5402377416545), exp2(nonlinear * Val_t(17.52) - promote<T, Val_t>(9.72)), right), promote<T, Val_t>(65504.0));
 }
 
+<<<<<<< HEAD
 >>>>>>> 7156483209f3077dab03775532c0e9922176b765
+=======
+>>>>>>> upstream/spirv_intrinsics
 }
 }
 }
